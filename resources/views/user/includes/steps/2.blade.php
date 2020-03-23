@@ -3,7 +3,7 @@
 @section('content')
 <div class="vh-100">
 	<div class="container">
-		<h5 class="text-muted mt-4"><a class="btn btn-link" href="{{ url('/') }}">Volver al inicio</a></h5>
+		<h5 class="text-muted mt-4"><a class="btn btn-link" href="{{ route('user.ideas.show', $idea) }}">Volver al paso 1</a></h5>
 		<div class="row">
 	        <div class="col-sm-12 col-md-9">
 	        	<h1 class="display-4 bold pt-3 brand-title">Digi-Talent</h1>
@@ -11,20 +11,20 @@
 
 	        	<div class="row mt-5">
 	        		<div class="col-md-3 p-0">
-	        			<div class="card pt-3 pl-3 pb-3 pr-0 step step-active">
+	        			<div class="card pt-3 pl-3 pb-3 pr-0 step">
 	        				<span class="float-left" style="font-weight: 400;
 						    font-style: normal;
 						    font-size: 36px;
 						    color: #FFFFFF;">1</span>
 	        				<span class="float-right">
 	        					<p class="m-0">Paso 1</p>
-	        					<p class="m-0">Construye tu marca</p>
+	        					<p class="m-0">Diseña tu negocio</p>
 	        				</span>
 	        			</div>
 	        		</div>
 
 	        		<div class="col-md-3 p-0">
-	        			<div class="card pt-3 pl-3 pb-3 pr-0 step">
+	        			<div class="card pt-3 pl-3 pb-3 pr-0 step step-active">
 	        				Paso 2
 	        			</div>
 	        		</div>
@@ -37,16 +37,15 @@
 
 	        		<div class="col-md-9">
 	        			<div class="mt-5">
-	        				<h5 class="bold raleway f-18">Construye tu marca</h5> 
+	        				<h5 class="bold raleway f-18">Diseña tu negocio</h5> 
 
 							<p class="mt-4 raleway">{{ $idea->extract }}</p>
-
 	        			</div>
 
 	        			<div class="mt-5 z-index raleway">
 
 	        				<h5 class="mb-4 bold">Recursos en línea</h5>
-	        				<p>Visita los siguientes enlaces para aprender más sobre cómo construir tu marca</p>
+	        				<p>Visita los siguientes enlaces para aprender más sobre cómo diseñar tu negocio</p>
 
 
 	        				@forelse($resources as $resource)
@@ -69,7 +68,7 @@
 	        				<h5 class="mb-4 bold">Tareas</h5>
 	        				<p>Una vez finalices las tareas que te indicamos a continuación, marca los campos para continuar:</p>
 
-	        				<form action="{{ route('user.ideas.save.step1', $idea) }}" method="POST">
+	        				<form action="{{ route('user.ideas.save.step2', $idea) }}" method="POST">
 	        					@csrf
 		        				@forelse($tasks as $task)
 			        				<div class="form-check">

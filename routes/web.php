@@ -19,7 +19,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
 	$categories = App\Models\Category::all();
     return view('user.index', compact('categories'));
-});
+})->name('homepage');
 
 //Save $idea session
 Route::post('/save-session', function (Request $request) {
@@ -57,14 +57,32 @@ Route::get('/ideas', function () {
 });
 
 //Display idea information in Step 1
-Route::get('/ideas/{slug}', 'User\IdeasController@show')->name('user.ideas.show');
+Route::get('/ideas/{idea}', 'User\IdeasController@show')->name('user.ideas.show');
 
-//Continue to Step 2
+//Save Step 1
 Route::post('/ideas/{idea}/save-step-1', 'User\StepController@saveStep1')->name('user.ideas.save.step1');
 
 //Display idea information in Step 2
 Route::get('/ideas/{idea}/2', 'User\StepController@getStep2')->name('user.ideas.get.step2');
 
+//Save Step 2
+Route::post('/ideas/{idea}/save-step-2', 'User\StepController@saveStep2')->name('user.ideas.save.step2');
+
+//Display idea information in Step 3
+Route::get('/ideas/{idea}/3', 'User\StepController@getStep3')->name('user.ideas.get.step3');
+
+//Save Step 3
+Route::post('/ideas/{idea}/save-step-3', 'User\StepController@saveStep3')->name('user.ideas.save.step3');
+
+/*
+========================
+User Ideas
+========================
+*/
+
+//Show all saved user ideas
+Route::get('/mis-ideas/', 'User\UserIdeasController@index')->name('saved.user.ideas.index')->middleware('auth');
+Route::get('/mis-tareas/', 'User\UserTasksController@index')->name('completed.user.tasks')->middleware('auth');
 
 
 

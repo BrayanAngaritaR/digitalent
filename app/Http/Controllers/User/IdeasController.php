@@ -51,9 +51,8 @@ class IdeasController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($slug)
+    public function show(Idea $idea)
     {
-        $idea = Idea::whereSlug($slug)->first();
 
         $resources = Resource::where('idea_id', $idea->id)
                 ->where('step_id', 1)->get();
@@ -64,9 +63,7 @@ class IdeasController extends Controller
         $user_tasks = UserTask::where('idea_id', $idea->id)
             ->where('user_id', auth()->id())
             ->where('step_id', 1)->pluck('task_id');
-
-        //dd($user_tasks);
-
+            
         return view('user.ideas.show', 
             compact([
                 'idea', 

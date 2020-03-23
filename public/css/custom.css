@@ -55,7 +55,12 @@ Results
 ======================
  */
 
-
+.raleway{
+    font-family: 'Raleway', sans-serif;
+}
+.bold{
+    font-weight: 700;
+}
 .results-bg{
     margin-left: -450px;
     margin-top: 200px;

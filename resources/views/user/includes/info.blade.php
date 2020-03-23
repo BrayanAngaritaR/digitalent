@@ -31,7 +31,7 @@
 	        		@guest
 	        		<div class="col-12">
 	        			<form action="{{ route('url.session.store') }}" method="POST">
-	        				<input type="text" name="slug" value="{{ $idea->slug }}">
+	        				<input type="hidden" name="slug" value="{{ $idea->slug }}">
 	        				@csrf
 	        				<button type="submit" class="mt-1 btn btn-primary btn-lg">
 	        					¿Cómo hacer de esta idea un negocio?
@@ -40,7 +40,7 @@
 	        		</div>
 	        		@else
 	        		<div class="col-12">
-	        			<a href="{{ route('user.ideas.show', $idea->slug) }}" class="mt-1 btn btn-primary btn-lg">
+	        			<a href="{{ route('user.ideas.show', $idea) }}" class="mt-1 btn btn-primary btn-lg">
 	        				¿Cómo hacer de esta idea un negocio?
 	        			</a>
 	        		</div>

@@ -6,5 +6,11 @@ use Illuminate\Database\Eloquent\Model;
 
 class Resource extends Model
 {
-    //
+    protected $fillable = [
+    	'title',
+    	'url',
+    	'english_resource',
+    	'idea_id',
+		'step_id'
+    ];
 }
