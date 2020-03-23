@@ -1,0 +1,82 @@
+@import url('https://fonts.googleapis.com/css?family=Montserrat:400,700&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Raleway:400,600&display=swap');
+
+body {
+	overflow-x: hidden;
+}
+
+.home-bg{
+	margin-top: -30px;
+}
+
+.btn-primary{
+	background-color: #2b44ff;
+    border-color: #2b44ff;
+    border: none;border-radius: 2px;
+}
+
+.btn-primary:hover {
+    color: #fff;
+    background-color: #6272e8;
+    border-color: #6272e8;
+}
+
+.btn-primary:not(:disabled):not(.disabled):active, .btn-primary:not(:disabled):not(.disabled).active, .show > .btn-primary.dropdown-toggle {
+    color: #fff;
+    background-color: #4a5ce8;
+    border-color: #4a5ce8;
+}
+
+.brand-title{
+	font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+
+}
+
+.brand-subtitle, .brand-button{
+	font-family: 'Raleway', sans-serif;
+}
+
+.brand-subtitle > span {
+	font-weight: 700;
+}
+
+.f-18{font-size: 18px;}
+
+.modal-content {
+	border: none;
+	border-radius: 0px;
+}
+
+
+/* 
+======================
+Results
+======================
+ */
+
+
+.results-bg{
+    margin-left: -450px;
+    margin-top: 200px;
+}
+
+.z-index{
+    z-index: 20;
+}
+
+
+/* 
+======================
+Steps
+======================
+ */
+
+ .step{
+    border-radius: 0px;
+ }
+
+.step-active{
+    background-color: #89C5D3;
+    color: white;
+}
