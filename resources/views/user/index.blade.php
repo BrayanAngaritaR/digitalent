@@ -53,12 +53,12 @@
 
 
 						<div class="custom-control custom-radio custom-control-inline">
-							<input type="radio" id="english_no" checked name="englishResults" class="custom-control-input">
+							<input type="radio" id="english_no" checked name="englishResults" class="custom-control-input" value="english_no">
 							<label class="custom-control-label" for="english_no">No</label>
 						</div>
 
 						<div class="custom-control custom-radio custom-control-inline">
-							<input type="radio" id="english_yes" name="englishResults" class="custom-control-input">
+							<input type="radio" id="english_yes" value="english_yes" name="englishResults" class="custom-control-input">
 							<label class="custom-control-label" for="english_yes">Sí</label>
 						</div>
 						

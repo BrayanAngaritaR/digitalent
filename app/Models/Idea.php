@@ -13,7 +13,8 @@ class Idea extends Model
         'slug',
         'extract',
         'url',
-        'category_id'
+        'category_id',
+        'english_idea'
     ];
 
     public function getRouteKeyName()

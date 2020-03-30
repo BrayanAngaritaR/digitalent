@@ -17,7 +17,6 @@ class CreateResourcesTable extends Migration
             $table->id();
             $table->string('title');
             $table->string('url');
-            $table->boolean('english_resource')->default(false);
             $table->foreignId('idea_id');
             $table->foreignId('step_id');
             $table->timestamps();

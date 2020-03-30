@@ -15,16 +15,6 @@ class TasksController extends Controller
         $this->middleware('role:admin');
     }
 
-    public function index()
-    {
-        //
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function create()
     {
         $ideas = Idea::latest()->take(20)->get();
@@ -32,12 +22,6 @@ class TasksController extends Controller
         return view('admin.tasks.create', compact('ideas', 'steps'));
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
     public function store(Request $request)
     {
         $tasks = $request->title;
@@ -45,66 +29,20 @@ class TasksController extends Controller
         if($tasks)
         {
             //Guarda todas las tareas asignadas
-            foreach($tasks as $task) {
-                $data = array(
-                    'title' => $task,
+            foreach($tasks as $s) {
+                Task::create([
+                    'title' => $s,
                     'idea_id' => $request->idea_id,
                     'step_id' => $request->step_id
-                );
-                Task::updateOrCreate($data);    
-            }
+                ]);  
+            }   
 
-            return back();
             toast('Se han asignado las tareas a la idea', 'success');
+            return back();
 
         } else {
             return back();
             toast('Ha ocurrido un error', 'error');
         }
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
     }
 }

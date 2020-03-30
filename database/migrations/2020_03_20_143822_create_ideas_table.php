@@ -18,6 +18,7 @@ class CreateIdeasTable extends Migration
             $table->string('title');
             $table->string('slug');
             $table->text('extract');
+            $table->boolean('english_idea')->default(false);
             $table->string('url');
             $table->foreignId('category_id');
             $table->timestamps();

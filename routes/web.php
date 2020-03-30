@@ -100,4 +100,8 @@ Route::post('/admin/ideas/create', 'Admin\IdeasController@store')->name('admin.i
 Route::get('/admin/tasks/create', 'Admin\TasksController@create')->name('admin.tasks.create');
 Route::post('/admin/tasks/create', 'Admin\TasksController@store')->name('admin.tasks.store');
 
+//Save resources in idea
+Route::get('/admin/resources/create', 'Admin\ResourcesController@create')->name('admin.resources.create');
+Route::post('/admin/resources/create', 'Admin\ResourcesController@store')->name('admin.resources.store');
+
 

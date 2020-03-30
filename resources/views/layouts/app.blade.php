@@ -45,9 +45,21 @@
 
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
 
+                                    @if(Auth::user()->hasRole('admin'))
                                     <a class="dropdown-item" href="{{ route('admin.ideas.create') }}">
                                         {{ __('Publicar idea') }}
                                     </a>
+
+                                    <a class="dropdown-item" href="{{ route('admin.ideas.create') }}">
+                                        {{ __('Asignar tareas') }}
+                                    </a>
+
+                                    <a class="dropdown-item" href="{{ route('admin.ideas.create') }}">
+                                        {{ __('Asignar recursos') }}
+                                    </a>
+
+                                    <hr>
+                                    @endif
 
                                     <a class="dropdown-item" href="{{ route('saved.user.ideas.index') }}">
                                         {{ __('Mis ideas') }}

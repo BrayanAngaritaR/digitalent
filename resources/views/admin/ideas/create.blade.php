@@ -31,7 +31,7 @@
                     	<div class="col-sm-12 col-md-6">
 							<p class="mb-3">{{ __('Categoría') }}</p>
 								<select class="form-control 
-									@error('password') is-invalid @enderror" 
+									@error('category_id') is-invalid @enderror" 
 									name="category_id" 
 									required>
 
@@ -50,9 +50,26 @@
 							@enderror
 						</div>
 
-						<div class="col-sm-12 col-md-6">
+                        <div class="col-sm-12 col-md-6">
+                            <p class="mb-3">{{ __('Idea en inglés') }}</p>
+                                <select class="form-control 
+                                    @error('password') is-invalid @enderror" 
+                                    name="english_idea" 
+                                    required>
+                                    <option value="1">Sí</option>
+                                    <option value="0" selected>No</option>
+                                </select>
+
+                            @error('english_idea')
+                            <p class="text-danger" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </p>
+                            @enderror
+                        </div>
+
+						<div class="col-sm-12 mt-3">
                             <p class="mb-3">{{ __('Enlace') }}</p>
-                            <input id="url" type="text" class="form-control mb-1 @error('url') is-invalid @enderror" name="url" value="{{ old('email') }}" required autocomplete="url" autofocus>
+                            <input id="url" type="text" class="form-control mb-1 @error('url') is-invalid @enderror" name="url" value="{{ old('url') }}" required autocomplete="url" autofocus>
 
                             @error('url')
                                 <p class="text-danger" role="alert">

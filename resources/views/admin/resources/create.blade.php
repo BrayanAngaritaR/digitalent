@@ -11,7 +11,7 @@
 
 	        	<h5 class="brand-subtitle mt-4 mb-5"><b>Crear nuevas tareas:</b></h5>
 
-	        	<form method="POST" action="{{ route('admin.tasks.store') }}">
+	        	<form method="POST" action="{{ route('admin.resources.store') }}">
                     @csrf
 
                     <div class="form-group row z-index">
@@ -60,18 +60,40 @@
 						</div>
 
 						<div class="col-sm-12 mt-2">
-							<p class="mb-3">{{ __('Título') }}</p>
-
 							<div class="input-form">
-								<input type="text" class="form-control mb-3 @error('title') is-invalid @enderror" name="title[]" value="{{ old('title') }}" placeholder="Título de la tarea" required autocomplete="title" autofocus>
+								<p class="mb-3 mt-3">{{ __('Agregar recurso') }}</p>
+
+								<input type="text" class="form-control mb-3 @error('title') is-invalid @enderror" name="title[]" value="{{ old('title') }}" placeholder="Título del recurso" required autocomplete="title" autofocus>
 
 								@error('title')
 									<p class="text-danger" role="alert">
 							    		<strong>{{ $message }}</strong>
 									</p>
 								@enderror
+
+								<input type="text" class="form-control mb-3 @error('url') is-invalid @enderror" name="url[]" value="{{ old('url') }}" placeholder="Enlace del recurso" required autocomplete="url" autofocus>
+
+								@error('url')
+									<p class="text-danger" role="alert">
+							    		<strong>{{ $message }}</strong>
+									</p>
+								@enderror
 							</div>
 						</div>
+
+						{{-- <div class="col-sm-12 mt-2">
+							<p class="mb-3">{{ __('Enlace') }}</p>
+
+							<div class="input-form">
+								<input type="text" class="form-control mb-3 @error('url') is-invalid @enderror" name="url[]" value="{{ old('url') }}" placeholder="Título de la tarea" required autocomplete="url" autofocus>
+
+								@error('url')
+									<p class="text-danger" role="alert">
+							    		<strong>{{ $message }}</strong>
+									</p>
+								@enderror
+							</div>
+						</div> --}}
 					</div>
 
                     <div class="form-group row mb-0">
@@ -96,8 +118,10 @@
 
 @endsection
 
-@push('scripts')
+ @push('scripts')
+
 <script type="text/javascript">
+
 	$(document).ready(function(){
 		$('#but_add').click(function(){
 			var newel = $('.input-form:last').clone();
@@ -106,6 +130,8 @@
 		});
 	});
 </script>
+
+
 @endpush 
 
 

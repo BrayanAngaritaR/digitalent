@@ -21,7 +21,16 @@ class IdeasController extends Controller
 
     public function index(Request $request)
     {
-        $ideas = Idea::where('category_id', $request->category_id)->paginate(10);
+        if ($request->englishResults == 'english_no') {
+            $english = 0;
+        } else {
+            $english = 1;
+        }
+
+        $ideas = Idea::where('category_id', $request->category_id)
+                ->where('english_idea', $english)
+                ->paginate(10);
+
         $idea_name = Category::whereId($request->category_id)->pluck('name')->first();
         return view('user.ideas.index', compact('ideas', 'idea_name'));
     }

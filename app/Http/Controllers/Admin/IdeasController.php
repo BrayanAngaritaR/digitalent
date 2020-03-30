@@ -4,7 +4,9 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Category;
+use App\Models\Idea;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 
 class IdeasController extends Controller
 {
@@ -13,75 +15,24 @@ class IdeasController extends Controller
         $this->middleware('role:admin');
     }
     
-    public function index()
-    {
-        //
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function create()
     {
         $categories = Category::all();
         return view('admin.ideas.create', compact('categories'));
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
     public function store(Request $request)
     {
-        //
-    }
+        Idea::create([
+            'title'         => $request->title,
+            'slug'          => Str::slug($request->title),
+            'url'           => $request->url, //Se asigna la URL que está en la posición del arreglo
+            'category_id'   => $request->category_id,
+            'english_idea'  => $request->english_idea,
+            'extract'       => $request->extract
+        ]);
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
+        toast('Se ha creado la idea', 'success');
+        return back();
     }
 }

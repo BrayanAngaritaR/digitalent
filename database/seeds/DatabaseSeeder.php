@@ -35,10 +35,10 @@ class DatabaseSeeder extends Seeder
 
         $role = Role::create(['name' => 'admin']);
 
-        factory(User::class, 200)->create();
-        factory(Idea::class, 2000)->create();
+        //factory(User::class, 200)->create();
+        //factory(Idea::class, 2000)->create();
         //factory(Task::class, 500)->create();
-        factory(Resource::class, 500)->create();
-        factory(UserTask::class, 500)->create();
+        //factory(Resource::class, 500)->create();
+        //factory(UserTask::class, 500)->create();
     }
 }
