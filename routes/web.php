@@ -58,6 +58,11 @@ Route::get('/ideas', function () {
     return view('user.ideas.index', compact('ideas', 'idea_name'));
 });
 
+//Política de privacidad
+Route::get('/privacy', function () {
+    return view('user.privacy');
+});
+
 //Display idea information in Step 1
 Route::get('/ideas/{idea}', 'User\IdeasController@show')->name('user.ideas.show')->middleware('auth');
 
