@@ -11,34 +11,30 @@
 
 	        	<h5 class="brand-subtitle mt-4"><b>Resultados de búsqueda:</b></h5>
 
-	        	<p class="mt-4 brand-subtitle f-18">Ideas recomendadas para  
+	        	<p class="mt-4 brand-subtitle f-18 mb-5">Ideas recomendadas para  
 	        		<span>
-	        			{{$idea_name}}
+	        			{{ Auth::user()->name }}
 	        		</span>
 	        	</p>
 	        
 	        	@forelse($ideas as $idea)
 	        	@include('user.includes.info')
 	        	<div class="card shadow p-4 mt-3 mb-4 z-index border-0">
-	        		<h5>{{ $idea->title }}</h5>
+	        		<h5>
+	        			<a href="{{ route('user.ideas.show', $idea) }}" class="text-dark">
+	        				{{ $idea->title }}
+	        			</a>
+	        		</h5>
 
-	        		<p>{{ $idea->extract }}</p>
-
-	        		<p>Fuente: {{ $idea->url }}</p>
-
-	        		<button type="button" class="btn btn-link btn-lg text-right" data-toggle="modal" data-target="#searchModal{{ $idea->id }}" href="">
-						<span class="p-3 brand-button font-weight-bold">Leer idea</span>
-					</button>
+	        		<div class="progress mt-3 rounded-0">
+						<div class="progress-bar" role="progressbar" style="width: {{$idea->pivot->progress}}%;" aria-valuenow="{{$idea->pivot->progress}}" aria-valuemin="0" aria-valuemax="100">{{$idea->pivot->progress}}%</div>
+					</div>
 	        	</div>
 	        	@empty
 	        	<div class="mt-5 card shadow p-4 border-0">
 	        		<h5>Lo sentimos, no tenemos ideas actualizadas. <b>Debes seleccionar un interés</b></h5>
 	        	</div>
 	        	@endforelse
-
-	        	@if($ideas)
-	        	{{ $ideas->links() }}
-	        	@endif
 
 	        	<a class="mt-5 btn btn-primary btn-lg" href="{{ url('/') }}">
 	        		Buscar ideas

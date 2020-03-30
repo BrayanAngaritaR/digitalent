@@ -8,6 +8,8 @@ use App\Models\Task;
 use App\Models\UserTask;
 use App\User;
 use Illuminate\Database\Seeder;
+use Spatie\Permission\Models\Role;
+use Spatie\Permission\Models\Permission;
 
 class DatabaseSeeder extends Seeder
 {
@@ -29,9 +31,13 @@ class DatabaseSeeder extends Seeder
     	Category::create(['name' => 'Cuidar personas']);
         // $this->call(UsersTableSeeder::class);
 
+        
+
+        $role = Role::create(['name' => 'admin']);
+
         factory(User::class, 200)->create();
         factory(Idea::class, 2000)->create();
-        factory(Task::class, 500)->create();
+        //factory(Task::class, 500)->create();
         factory(Resource::class, 500)->create();
         factory(UserTask::class, 500)->create();
     }

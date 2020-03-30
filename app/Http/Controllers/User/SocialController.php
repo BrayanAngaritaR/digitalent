@@ -37,7 +37,8 @@ class SocialController extends Controller
             return redirect()->route('user.ideas.show', $idea_url);
 
         } else {
-        	return "No hay una URL";
+        	toast('Se ha iniciado sesión','success');
+        	return redirect()->to('/');
         }
 
 		

@@ -7,42 +7,23 @@ use App\Models\Category;
 use App\Models\Idea;
 use App\Models\Resource;
 use App\Models\Task;
+use App\Models\UserIdea;
 use App\Models\UserTask;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class IdeasController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     public function index(Request $request)
     {
-        $ideas = Idea::where('category_id', $request->category_id)->get();
+        $ideas = Idea::where('category_id', $request->category_id)->paginate(10);
         $idea_name = Category::whereId($request->category_id)->pluck('name')->first();
         return view('user.ideas.index', compact('ideas', 'idea_name'));
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
     }
 
     /**
@@ -54,6 +35,15 @@ class IdeasController extends Controller
     public function show(Idea $idea)
     {
 
+        //Guardar la idea en el perfil del usuario
+
+        $user = Auth::id();
+
+        UserIdea::updateOrCreate([
+            'user_id'   => $user,
+            'idea_id'   => $idea->id
+        ]);
+
         $resources = Resource::where('idea_id', $idea->id)
                 ->where('step_id', 1)->get();
 
@@ -61,7 +51,7 @@ class IdeasController extends Controller
                 ->where('step_id', 1)->get();
 
         $user_tasks = UserTask::where('idea_id', $idea->id)
-            ->where('user_id', auth()->id())
+            ->where('user_id', $user)
             ->where('step_id', 1)->pluck('task_id');
             
         return view('user.ideas.show', 
@@ -75,29 +65,6 @@ class IdeasController extends Controller
     }
 
     /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
-
-    /**
      * Remove the specified resource from storage.
      *
      * @param  int  $id
@@ -105,6 +72,6 @@ class IdeasController extends Controller
      */
     public function destroy($id)
     {
-        //
+        //return "Eliminar la idea de mi perfil"
     }
 }

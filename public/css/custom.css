@@ -5,6 +5,29 @@ body {
 	overflow-x: hidden;
 }
 
+a {
+    color: #2b44ff;
+    text-decoration: none;
+    background-color: transparent;
+}
+
+
+.btn-outline-theme{
+    color: #2b44ff;
+    border-color: #2b44ff;
+    border-radius: 0px;
+}
+
+.btn-outline-theme:hover{
+    background-color: #2b44ff;
+    color: #fff;
+    border-radius: 0px;
+}
+
+.form-control{
+    border-radius: 0px!important;
+}
+
 .home-bg{
 	margin-top: -30px;
 }
@@ -84,4 +107,35 @@ Steps
 .step-active{
     background-color: #89C5D3;
     color: white;
+}
+
+.step-link:hover{
+    text-decoration: none;
+}
+
+.btn-disabled{
+    color: red;
+}
+
+.btn-primary.disabled, .btn-primary:disabled
+{
+    border: 1px solid #999;
+    background-color: #ddd;
+    cursor: no-drop!important;
+    background-color: rgb(173,173,173);
+}
+
+/* 
+======================
+Profile 
+======================
+ */
+
+.progress-bar{
+    background-color: #2b44ff;
+}
+
+.footer {
+  position: absolute;
+  bottom: 0;
 }

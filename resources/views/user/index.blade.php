@@ -18,15 +18,6 @@
 	        </div>	        
 	    </div>
 	</div>
-
-	<footer class="mt-5 pt-5">
-		<div class="container bg-dark mt-5">
-			<p class="text-white text-center p-1">
-				Digi-Talent 2020 by BePro
-			</p>
-		</div>
-	</footer>
-    
 </div>
 
 
@@ -86,7 +77,6 @@
 		</div>
 	</div>
 </div>
-
 
 @endsection
 

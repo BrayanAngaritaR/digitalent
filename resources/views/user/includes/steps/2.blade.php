@@ -3,35 +3,39 @@
 @section('content')
 <div class="vh-100">
 	<div class="container">
-		<h5 class="text-muted mt-4"><a class="btn btn-link" href="{{ route('user.ideas.show', $idea) }}">Volver al paso 1</a></h5>
 		<div class="row">
 	        <div class="col-sm-12 col-md-9">
 	        	<h1 class="display-4 bold pt-3 brand-title">Digi-Talent</h1>
 	        	<h1 class="bold pt-3 brand-title">Cómo convertir tu idea en un negocio</h1>
 
 	        	<div class="row mt-5">
-	        		<div class="col-md-3 p-0">
-	        			<div class="card pt-3 pl-3 pb-3 pr-0 step">
-	        				<span class="float-left" style="font-weight: 400;
-						    font-style: normal;
-						    font-size: 36px;
-						    color: #FFFFFF;">1</span>
+	        		<div class="col-md-3 p-0 my-auto">
+	        			<div class="card pt-3 pl-3 pb-3 pr-0 step z-index">
+	        				
 	        				<span class="float-right">
-	        					<p class="m-0">Paso 1</p>
-	        					<p class="m-0">Diseña tu negocio</p>
+	        					<a href="{{ route('user.ideas.show', $idea) }}" class="text-dark step-link">
+		        					Paso 1
+		        					<p class="m-0">Construye tu marca</p>
+		        				</a>
 	        				</span>
 	        			</div>
 	        		</div>
 
-	        		<div class="col-md-3 p-0">
-	        			<div class="card pt-3 pl-3 pb-3 pr-0 step step-active">
-	        				Paso 2
+	        		<div class="col-md-3 p-0 my-auto">
+	        			<div class="card pt-3 pl-3 pb-3 pr-0 step step-active z-index">
+	        				<a href="{{ route('user.ideas.get.step2', $idea) }}" class="text-dark step-link">
+	        					<h4 class="text-white">Paso 2</h4>
+	        					<p class="m-0 text-white">Diseña tu negocio</p>
+	        				</a>
 	        			</div>
 	        		</div>
 
-	        		<div class="col-md-3 p-0">
-	        			<div class="card pt-3 pl-3 pb-3 pr-0 step">
-	        				Paso 3
+	        		<div class="col-md-3 p-0 my-auto">
+	        			<div class="card pt-3 pl-3 pb-3 pr-0 step z-index">
+	        				<a href="{{ route('user.ideas.get.step3', $idea) }}" class="text-dark step-link">
+	        					Paso 3
+	        					<p class="m-0">Promociona tu negocio</p>
+	        				</a>
 	        			</div>
 	        		</div>
 
@@ -95,9 +99,11 @@
 		        				@endforelse
 
 		        				<div class="mt-5">
-									<button type="submit" class="mt-5 btn btn-primary btn-lg">
-		        						Marcar como finalizado
-		        					</button>
+									<div class="mt-5">
+										<button type="submit" id="continue" class="mt-5 btn btn-primary btn-lg">
+			        						Marcar como finalizado
+			        					</button>
+				        			</div>
 			        			</div>
 
 	        				</form>
@@ -108,25 +114,14 @@
 
 	        <div class="col-sm-12 col-md-3 mt-0">
 	        	<img class="results-bg" src="/assets/images/results-bg.png" width="1000">
-	        </div>	    
-
-	           
+	        </div>	
 	    </div>
 	</div>
-
-	<footer class="mt-5">
-		<div class="container bg-dark mt-5">
-			<p class="text-white text-center p-1">
-				Digi-Talent 2020 by BePro
-			</p>
-		</div>
-	</footer>
-    
 </div>
-
-
-
-
 @endsection
+
+@push('scripts')
+<script src="{{ asset('js/validate-steps.js') }}"></script>
+@endpush
 
 

@@ -35,6 +35,8 @@ Facebook login and register routes
 
 //Login and register routes
 Auth::routes();
+
+//Route::post('logout', 'App\Http\Controllers\Auth\LoginController@logout')->name('logout');
 Route::get('/home', 'HomeController@index')->name('home');
 
 //Facebook provider
@@ -51,7 +53,7 @@ Ideas
 Route::post('/ideas', 'User\IdeasController@index')->name('user.ideas.index');
 
 Route::get('/ideas', function () {
-	$idea_name = "Debes seleccionar un interés";
+	$idea_name = "Búsqueda vacía";
 	$ideas = [];
     return view('user.ideas.index', compact('ideas', 'idea_name'));
 });
@@ -84,7 +86,18 @@ User Ideas
 Route::get('/mis-ideas/', 'User\UserIdeasController@index')->name('saved.user.ideas.index')->middleware('auth');
 Route::get('/mis-tareas/', 'User\UserTasksController@index')->name('completed.user.tasks')->middleware('auth');
 
+/*
+========================
+Admin
+========================
+*/
 
+//Save ideas
+Route::get('/admin/ideas/create', 'Admin\IdeasController@create')->name('admin.ideas.create');
+Route::post('/admin/ideas/create', 'Admin\IdeasController@store')->name('admin.ideas.store');
 
+//Save tasks in idea
+Route::get('/admin/tasks/create', 'Admin\TasksController@create')->name('admin.tasks.create');
+Route::post('/admin/tasks/create', 'Admin\TasksController@store')->name('admin.tasks.store');
 
 

@@ -2,6 +2,8 @@
 
 namespace App\Models;
 
+use App\Models\UserIdeas;
+use App\User;
 use Illuminate\Database\Eloquent\Model;
 
 class Idea extends Model
@@ -17,5 +19,10 @@ class Idea extends Model
     public function getRouteKeyName()
     {
         return 'slug';
+    }
+
+    public function users()
+    {
+        return $this->belongsToMany(User::class, 'user_ideas')->withPivot('progress');
     }
 }

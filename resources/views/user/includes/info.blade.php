@@ -37,6 +37,10 @@
 	        					¿Cómo hacer de esta idea un negocio?
 	        				</button>
 	        			</form>
+
+	        			<p class="mt-3">
+	        				<small>Para guardar tu progreso iniciarás sesión</small>
+	        			</p>
 	        		</div>
 	        		@else
 	        		<div class="col-12">

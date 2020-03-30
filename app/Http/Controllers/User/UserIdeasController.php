@@ -3,14 +3,18 @@
 namespace App\Http\Controllers\User;
 
 use App\Http\Controllers\Controller;
+use App\Models\UserIdea;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class UserIdeasController extends Controller
 {
 
     public function index()
     {
-        return "Lista de las ideas guardadas por el usuario";
+        //$ideas = UserIdea::where('user_id', Auth::id())->get();
+        $ideas = Auth::user()->ideas;
+        return view('user.profile.ideas.index', compact('ideas'));
     }
 
     public function store(Request $request)
