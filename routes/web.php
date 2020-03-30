@@ -59,7 +59,7 @@ Route::get('/ideas', function () {
 });
 
 //Display idea information in Step 1
-Route::get('/ideas/{idea}', 'User\IdeasController@show')->name('user.ideas.show');
+Route::get('/ideas/{idea}', 'User\IdeasController@show')->name('user.ideas.show')->middleware('auth');
 
 //Save Step 1
 Route::post('/ideas/{idea}/save-step-1', 'User\StepController@saveStep1')->name('user.ideas.save.step1');
